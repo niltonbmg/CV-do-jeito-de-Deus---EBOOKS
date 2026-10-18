@@ -18,7 +18,8 @@ Cada livro está em Markdown (`livros/<série>/*.md`) para edição e revisão n
 | Vol. | Título | Capítulos |
 |---|---|---|
 | 1 | [Fundamentos da Auditoria](livros/auditoria/volume-1-fundamentos.md) | 21 |
+| 2 | [Auditoria Fiscal e Tributária](livros/auditoria/volume-2-auditoria-fiscal-e-tributaria.md) | 26 |
 
-## Outras obras do autor (a enviar)
+## Como Vender do Jeito de Deus
 
-- Como Vender do Jeito de Deus
+[Transformando Vendas em Ministério, Negócios em Missão e Lucro em Mordomia Cristã](livros/vendas/como-vender-do-jeito-de-deus.md) — 10 capítulos
