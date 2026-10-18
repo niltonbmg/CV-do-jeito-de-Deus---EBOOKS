@@ -92,7 +92,7 @@ function renderPerfil(p) {
       <div class="niveis">${NIVEIS.map((n) => `<span class="${n.id === p.nivel ? "ativo" : ""}">${n.nome}</span>`).join("")}</div>
     </div>
     <p><strong>Nível ${nivel.nome}:</strong> ${nivel.desc}</p>
-    <h3 style="color:var(--azul)">Kit indicado para sua empresa</h3>
+    <h3>Kit indicado para sua empresa</h3>
     <ul class="kit">${kit.map((x) => `<li><span>${x.nome}</span><strong>${brl(x.preco)}</strong></li>`).join("")}</ul>
     <p>Total dos itens com preço: <strong>${total.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}</strong>${temOrcamento ? " + itens sob orçamento" : ""}</p>
     <div class="acoes">
