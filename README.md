@@ -26,4 +26,4 @@ Cada livro está em Markdown (`livros/<série>/*.md`) para edição e revisão n
 
 ## Crescer do Jeito de Deus (em construção)
 
-[Proposta de estrutura](livros/crescer/estrutura.md) — romance de negócios: prólogo, 19 capítulos, epílogo e as 12 Leis
+[Proposta de estrutura](livros/crescer/estrutura.md) — 24 capítulos em 5 partes, com Débora como personagem-guia
