@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Do Rei Soluções — Portal do Empreendedor</title>
+<meta name="description" content="Do Rei Soluções: soluções em tecnologia, escritório, gestão e conhecimento para empreendedores.">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="topo">
+  <div class="container nav">
+    <a href="#" class="logo">Do Rei <span>Soluções</span></a>
+    <nav>
+      <a href="#areas">Áreas</a>
+      <a href="#loja">Loja</a>
+      <a href="#conhecimento">Conhecimento</a>
+      <a href="#contato">Contato</a>
+      <button id="abrirCarrinho" class="btn-carrinho">🛒 <span id="qtdCarrinho">0</span></button>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <h1>O Portal do Empreendedor</h1>
+    <p>Soluções em todas as áreas — tecnologia, escritório, gestão, marketing e muito mais. Compre soluções prontas e adquira conhecimento para fazer seu negócio crescer.</p>
+    <div class="acoes">
+      <a href="#loja" class="btn">Ver soluções</a>
+      <a href="#conhecimento" class="btn btn-sec">Aprender agora</a>
+    </div>
+  </div>
+</section>
+
+<section id="areas" class="container secao">
+  <h2>Nossas áreas de atuação</h2>
+  <div class="grade" id="gradeAreas"></div>
+</section>
+
+<section id="loja" class="secao fundo">
+  <div class="container">
+    <h2>Loja de Soluções e Conhecimento</h2>
+    <div class="filtros" id="filtros"></div>
+    <div class="grade" id="gradeProdutos"></div>
+  </div>
+</section>
+
+<section id="conhecimento" class="container secao">
+  <h2>Central de Conhecimento</h2>
+  <div class="grade" id="gradeArtigos"></div>
+</section>
+
+<section id="contato" class="secao fundo">
+  <div class="container contato">
+    <h2>Fale com a Do Rei Soluções</h2>
+    <p>Precisa de uma solução sob medida? Conte o que seu negócio precisa.</p>
+    <form id="formContato">
+      <input name="nome" placeholder="Seu nome" required>
+      <input name="email" type="email" placeholder="Seu e-mail" required>
+      <select name="area" id="selArea"></select>
+      <textarea name="mensagem" rows="4" placeholder="Descreva sua necessidade" required></textarea>
+      <button class="btn" type="submit">Enviar pelo WhatsApp</button>
+    </form>
+  </div>
+</section>
+
+<footer class="rodape">
+  <div class="container">© <span id="ano"></span> Do Rei Soluções — Portal do Empreendedor</div>
+</footer>
+
+<aside id="carrinho" class="carrinho" aria-hidden="true">
+  <div class="carrinho-topo"><h3>Seu carrinho</h3><button id="fecharCarrinho">✕</button></div>
+  <ul id="itensCarrinho"></ul>
+  <p class="total">Total: <strong id="totalCarrinho">R$ 0,00</strong></p>
+  <button id="finalizar" class="btn">Finalizar pedido</button>
+</aside>
+
+<script src="app.js"></script>
+</body>
+</html>
