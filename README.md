@@ -23,3 +23,7 @@ Cada livro está em Markdown (`livros/<série>/*.md`) para edição e revisão n
 ## Como Vender do Jeito de Deus
 
 [Transformando Vendas em Ministério, Negócios em Missão e Lucro em Mordomia Cristã](livros/vendas/como-vender-do-jeito-de-deus.md) — 10 capítulos
+
+## Crescer do Jeito de Deus (em construção)
+
+[Proposta de estrutura](livros/crescer/estrutura.md) — 24 capítulos em 5 partes
