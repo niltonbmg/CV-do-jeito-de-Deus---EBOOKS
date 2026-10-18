@@ -7,6 +7,7 @@ const AREAS = [
   { id: "gestao", icone: "📊", nome: "Gestão e Finanças", desc: "Fluxo de caixa, precificação, planejamento e controle financeiro." },
   { id: "marketing", icone: "📣", nome: "Marketing e Vendas", desc: "Redes sociais, identidade visual, funis de venda e atendimento." },
   { id: "juridico", icone: "⚖️", nome: "Legal e Formalização", desc: "Abertura de MEI/empresa, contratos e regularização." },
+  { id: "informatica", icone: "🖥️", nome: "Informática e Equipamentos", desc: "Computadores, redes, impressoras, sistemas e TI sob medida." },
   { id: "educacao", icone: "🎓", nome: "Conhecimento", desc: "E-books, cursos e mentorias para empreendedores." },
 ];
 
@@ -23,6 +24,13 @@ const PRODUTOS = [
   { id: 10, area: "educacao", nome: "E-book: Empreender do Jeito de Deus", desc: "Princípios de fé, propósito e excelência nos negócios.", preco: 29.9 },
   { id: 11, area: "educacao", nome: "E-book: Currículo do Jeito de Deus", desc: "Como montar um currículo que abre portas.", preco: 19.9 },
   { id: 12, area: "educacao", nome: "Mentoria Empreendedor Real", desc: "4 encontros individuais para destravar seu negócio.", preco: 597 },
+  { id: 13, area: "informatica", nome: "Computador Sob Medida", desc: "Montado e configurado para a rotina da sua empresa, com garantia.", preco: 0 },
+  { id: 14, area: "informatica", nome: "Notebook Empresarial Configurado", desc: "Notebook com sistema, antivírus, Office e backup prontos.", preco: 0 },
+  { id: 15, area: "informatica", nome: "Kit Rede Wi-Fi Empresarial", desc: "Roteador, cabeamento e rede de visitantes separada, instalados.", preco: 0 },
+  { id: 16, area: "informatica", nome: "Impressora Multifuncional + Instalação", desc: "Impressão, cópia e digitalização em rede.", preco: 0 },
+  { id: 17, area: "informatica", nome: "Sistema de Caixa (PDV) + Emissor de NF", desc: "Vendas, estoque e nota fiscal integrados.", preco: 0 },
+  { id: 18, area: "informatica", nome: "Solução de TI Personalizada", desc: "Sistema, automação ou infraestrutura sob medida para sua empresa.", preco: 0 },
+  { id: 19, area: "informatica", nome: "Suporte de TI Mensal", desc: "Manutenção, backup e atendimento remoto para sua equipe.", preco: 0 },
 ];
 
 const ARTIGOS = [
@@ -32,7 +40,8 @@ const ARTIGOS = [
   { icone: "🙏", titulo: "Propósito e fé no empreendedorismo", resumo: "Integridade, mordomia e serviço como base de um negócio duradouro." },
 ];
 
-const brl = (v) => v.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
+// Preço 0 indica produto vendido sob orçamento.
+const brl = (v) => v ? v.toLocaleString("pt-BR", { style: "currency", currency: "BRL" }) : "Sob orçamento";
 const $ = (s) => document.querySelector(s);
 const nomeArea = (id) => AREAS.find((a) => a.id === id).nome;
 
@@ -97,6 +106,13 @@ function renderCarrinho() {
   $("#totalCarrinho").textContent = brl(total);
 }
 
+function adicionarAoCarrinho(ids) {
+  carrinho.push(...ids);
+  salvar();
+  renderCarrinho();
+  $("#carrinho").classList.add("aberto");
+}
+
 function abrirWhatsApp(texto) {
   window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(texto)}`, "_blank");
 }
@@ -113,11 +129,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   $("#gradeProdutos").addEventListener("click", (e) => {
     const id = Number(e.target.dataset.add);
-    if (!id) return;
-    carrinho.push(id);
-    salvar();
-    renderCarrinho();
-    $("#carrinho").classList.add("aberto");
+    if (id) adicionarAoCarrinho([id]);
   });
 
   $("#itensCarrinho").addEventListener("click", (e) => {
@@ -136,7 +148,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const p = PRODUTOS.find((x) => x.id === id);
       return `• ${p.nome} — ${brl(p.preco)}`;
     });
-    abrirWhatsApp(`Olá, Do Rei Soluções! Quero comprar:\n${linhas.join("\n")}\nTotal: ${$("#totalCarrinho").textContent}`);
+    abrirWhatsApp(`Olá, Do Rei Soluções! Quero comprar:\n${linhas.join("\n")}${resumoEmpresa()}\nTotal: ${$("#totalCarrinho").textContent}`);
   });
 
   $("#assinar").addEventListener("click", () =>
@@ -145,6 +157,6 @@ document.addEventListener("DOMContentLoaded", () => {
   $("#formContato").addEventListener("submit", (e) => {
     e.preventDefault();
     const d = new FormData(e.target);
-    abrirWhatsApp(`Olá, sou ${d.get("nome")} (${d.get("email")}).\nÁrea: ${d.get("area")}\n${d.get("mensagem")}`);
+    abrirWhatsApp(`Olá, sou ${d.get("nome")} (${d.get("email")}).\nÁrea: ${d.get("area")}\n${d.get("mensagem")}${resumoEmpresa()}`);
   });
 });

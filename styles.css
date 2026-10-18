@@ -80,3 +80,24 @@ h2 { color: var(--azul); text-align: center; margin: 0 0 32px; }
 .aulas { list-style: none; padding: 0; margin: 0; }
 .aulas li { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 14px 0; border-bottom: 1px solid #e4e7eb; }
 .aulas input { width: 18px; height: 18px; accent-color: var(--azul); }
+.setores-topo { border-bottom: 1px solid #e4e7eb; background: var(--branco); }
+.setores-topo .container { display: flex; gap: 8px; overflow-x: auto; padding-top: 10px; padding-bottom: 10px; }
+.setor-chip { flex: none; border: 1px solid #e4e7eb; background: var(--branco); border-radius: 10px; padding: 8px 14px; cursor: pointer; font: inherit; font-size: .9rem; color: var(--azul); white-space: nowrap; }
+.setor-chip:hover, .setor-chip.ativo { border-color: var(--azul); background: var(--suave); }
+.sub { text-align: center; max-width: 640px; margin: -16px auto 24px; color: #52606d; }
+.abas { display: flex; justify-content: center; gap: 8px; margin-bottom: 16px; }
+.abas button { border: 1px solid #cbd2d9; background: var(--branco); padding: 8px 16px; border-radius: 8px; cursor: pointer; font: inherit; }
+.abas button.ativo { background: var(--azul); color: var(--branco); border-color: var(--azul); }
+.form-empresa { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; max-width: 720px; margin: 0 auto; }
+.form-empresa input, .form-empresa select { flex: 1 1 200px; padding: 12px; border: 1px solid #cbd2d9; border-radius: 8px; font: inherit; }
+.perfil { background: var(--branco); border: 1px solid #e4e7eb; border-radius: 16px; padding: 28px; margin-top: 24px; }
+.perfil-topo { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; align-items: flex-start; margin-bottom: 20px; }
+.perfil-topo h3 { margin: 0 0 4px; color: var(--azul); }
+.perfil-topo p { margin: 0; color: #52606d; }
+.niveis { display: flex; gap: 6px; }
+.niveis span { padding: 4px 12px; border-radius: 12px; font-size: .82rem; background: var(--suave); color: #7b8794; }
+.niveis span.ativo { background: var(--ouro); color: var(--azul); font-weight: 700; }
+.kit { list-style: none; padding: 0; margin: 0 0 20px; }
+.kit li { display: flex; justify-content: space-between; gap: 12px; padding: 10px 0; border-bottom: 1px solid #e4e7eb; }
+.kit li strong { white-space: nowrap; color: var(--azul); }
+.perfil .acoes { justify-content: flex-start; }

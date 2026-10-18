@@ -23,14 +23,41 @@
   </div>
 </header>
 
+<div class="setores-topo">
+  <div class="container" id="setoresTopo"></div>
+</div>
+
 <section class="hero">
   <div class="container">
     <h1>O Portal do Empreendedor</h1>
     <p>Soluções em todas as áreas — tecnologia, escritório, gestão, marketing e muito mais. Compre soluções prontas e adquira conhecimento para fazer seu negócio crescer.</p>
     <div class="acoes">
-      <a href="#loja" class="btn">Ver soluções</a>
+      <a href="#empresa" class="btn">Encontrar soluções para minha empresa</a>
       <a href="#conhecimento" class="btn btn-sec">Aprender agora</a>
     </div>
+  </div>
+</section>
+
+<section id="empresa" class="secao fundo">
+  <div class="container">
+    <h2>Conte quem é sua empresa</h2>
+    <p class="sub">Informe o CNPJ e identificamos setor e momento do seu negócio. Não tem CNPJ? Descreva sua empresa e nós ajudamos — inclusive a se formalizar.</p>
+    <div class="abas">
+      <button class="ativo" data-aba="cnpj">Tenho CNPJ</button>
+      <button data-aba="manual">Não tenho CNPJ</button>
+    </div>
+    <form id="formCnpj" class="form-empresa">
+      <input name="cnpj" placeholder="00.000.000/0000-00" inputmode="numeric" required>
+      <button class="btn" type="submit">Consultar</button>
+    </form>
+    <form id="formManual" class="form-empresa oculto">
+      <input name="nome" placeholder="Nome do negócio" required>
+      <select name="setor" id="selSetor"></select>
+      <select name="nivel" id="selNivel"></select>
+      <button class="btn" type="submit">Montar meu kit</button>
+    </form>
+    <p id="msgEmpresa" class="aviso"></p>
+    <div id="perfilEmpresa" class="perfil oculto"></div>
   </div>
 </section>
 
@@ -95,5 +122,6 @@
 </aside>
 
 <script src="app.js"></script>
+<script src="empresa.js"></script>
 </body>
 </html>
