@@ -139,6 +139,9 @@ document.addEventListener("DOMContentLoaded", () => {
     abrirWhatsApp(`Olá, Do Rei Soluções! Quero comprar:\n${linhas.join("\n")}\nTotal: ${$("#totalCarrinho").textContent}`);
   });
 
+  $("#assinar").addEventListener("click", () =>
+    abrirWhatsApp("Olá, Do Rei Soluções! Quero assinar o plano mensal de R$ 79,90 com acesso a todos os cursos."));
+
   $("#formContato").addEventListener("submit", (e) => {
     e.preventDefault();
     const d = new FormData(e.target);
