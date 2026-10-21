@@ -2289,7 +2289,7 @@
     const strong = scores.filter(x => x.score === 3).map(x => x.q.dim.toLowerCase());
     const weak = scores.filter(x => x.score < 3).sort((a, b) => a.score - b.score);
     const card = (x, full) => `<div class="qlearn"><div class="lk">${x.q.dim} · ${LEVELS[x.score]}</div><div class="qchap" style="margin:${full ? '0 0 8px' : '0'}">${x.q.chap} · ${x.q.ref}</div>${full ? `<div>${x.q.lesson}</div>` : ''}</div>`;
-    let html = '<h4>Resumo</h4>';
+    let html = '<h4>Seu ponto de partida</h4>';
     if (weak.length) {
       html += `<p>${weak.length > 3 ? 'As 3 áreas' : (weak.length === 1 ? 'A área' : `As ${weak.length} áreas`)} que mais pedem atenção na sua forma de vender:</p>`;
       weak.slice(0, 3).forEach(x => { html += card(x, true); });
