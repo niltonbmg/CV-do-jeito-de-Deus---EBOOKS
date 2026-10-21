@@ -1,4 +1,13 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}</style></head><body>
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}
+  .diag .qlearn{margin:0 0 14px;padding:18px 20px;background:var(--paper-2);border-left:3px solid var(--brass);font-size:15px;line-height:1.55;color:var(--ink-soft)}
+  .diag .qlearn .lk{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--brass-deep);margin-bottom:8px}
+  .diag .qlearn blockquote{margin:0 0 10px;font-family:var(--serif);font-style:italic;font-size:17px;color:var(--ink)}
+  .diag .qlearn cite{display:block;font-style:normal;font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:4px}
+  .diag .qrecs{margin:0 0 28px;font-size:15px;line-height:1.55;color:var(--ink-soft)}
+  .diag .qrecs h4{font-family:var(--serif);font-weight:500;font-size:19px;color:var(--ink);margin:0 0 10px}
+  .diag .qrecs ul{margin:0;padding-left:20px}
+  .diag .qrecs li{margin:4px 0}
+</style></head><body>
 <title>Como Vender do Jeito de Deus</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1635,6 +1644,7 @@
       <div class="screen on" id="dg-intro">
         <div class="qdim">2 minutos · 9 perguntas · resultado imediato</div>
         <h3 class="qtext">Antes de continuar lendo, faça o diagnóstico. Ele mostra <em>onde</em> o livro vai ajudar você mais.</h3>
+        <p style="margin:14px 0 0;font-size:15px;color:var(--ink-soft);line-height:1.55">Responda pensando no que você <b>realmente faz hoje</b>, não no que seria o ideal. No final, você vê como está cada área da sua forma de vender e em que pontos o livro pode ajudar.</p>
         <div class="intro-meta">
           <div><div class="k">Perguntas</div><div class="v">9</div></div>
           <div><div class="k">Tempo</div><div class="v">~ 2 min</div></div>
@@ -1672,6 +1682,7 @@
         <p class="rdiag" id="dg-copy">Diagnóstico personalizado aparece aqui.</p>
 
         <div class="chart" id="dg-chart"></div>
+        <div class="qrecs" id="dg-recs"></div>
 
         <div class="rcta">
           <div>
@@ -1938,60 +1949,87 @@
 
   /* ═══════════ DIAGNÓSTICO — 9 dimensões ═══════════ */
   const QUESTIONS = [
-    { dim: "Integridade", q: "Seu chefe te pede pra dizer ao cliente que o preço promocional vale só hoje. Mas você sabe que amanhã a mesma promoção continua. O que você faz?",
+    { dim: "Integridade", cap: 2, chap: "Capítulo 2 · O caráter do vendedor cristão",
+      q: "Seu gestor pede para você dizer ao cliente que a promoção “acaba hoje”. Você sabe que ela continua amanhã. O que você faz?",
       options: [
-        { t: "Falo o que o chefe pediu. Não é problema meu.", s: 0 },
-        { t: "Falo, mas fico com o coração pesado.", s: 33 },
-        { t: "Encontro um jeito de dizer sem passar mentira pro cliente.", s: 66 },
-        { t: "Não conto isso pro cliente. Prefiro perder a venda a mentir.", s: 100 } ] },
-    { dim: "Serviço", q: "O cliente quer comprar o produto mais caro. Você percebe que o mais barato já resolve o problema dele. Se você vender o caro, ganha 4 vezes mais. O que faz?",
+        { t: "Repito o que me pediram. A decisão não é minha.", s: 0 },
+        { t: "Repito, mas fico desconfortável.", s: 33 },
+        { t: "Falo da promoção sem afirmar que ela acaba hoje.", s: 66 },
+        { t: "Digo a verdade sobre o prazo, mesmo que o cliente decida depois.", s: 100 } ],
+      verse: "A balança enganosa é abominação para o Senhor, mas o peso justo é o seu prazer.", ref: "Provérbios 11.1",
+      lesson: "Urgência inventada é uma forma de “balança enganosa”. O livro ensina a fechar sem pressão artificial: o cliente decide melhor quando recebe a informação verdadeira." },
+    { dim: "Serviço", cap: 3, chap: "Capítulo 3 · Vender é servir",
+      q: "O cliente quer o produto mais caro, mas o mais barato resolve o problema dele. Vender o caro rende uma comissão quatro vezes maior. O que você faz?",
       options: [
-        { t: "Vendo o mais caro. Foi ele quem escolheu, não fui eu.", s: 0 },
-        { t: "Mostro os dois e deixo ele decidir sozinho, sem opinar.", s: 33 },
-        { t: "Falo que o barato já serve, mas se ele insistir, vendo o caro.", s: 66 },
-        { t: "Digo com sinceridade que o barato resolve. Ganho menos, mas ganho a confiança dele.", s: 100 } ] },
-    { dim: "Prospecção", q: "Um novo cliente aparece pra você. Como você enxerga essa pessoa que chegou?",
+        { t: "Vendo o mais caro. Foi ele quem escolheu.", s: 0 },
+        { t: "Mostro os dois e não dou opinião.", s: 33 },
+        { t: "Aviso que o barato resolve, mas, se ele insistir, vendo o caro.", s: 66 },
+        { t: "Recomendo com sinceridade o que resolve o problema dele.", s: 100 } ],
+      verse: "Não atente cada um para o que é propriamente seu, mas cada qual também para o que é dos outros.", ref: "Filipenses 2.4",
+      lesson: "Servir é colocar a necessidade do cliente antes da comissão. A confiança que nasce disso traz recompra e indicação." },
+    { dim: "Visão do cliente", cap: 3, chap: "Capítulo 3 · Vender é servir",
+      q: "Um cliente novo chega até você. Qual pensamento vem primeiro?",
       options: [
-        { t: "É mais um nome na minha lista. Preciso bater a meta.", s: 0 },
-        { t: "É uma chance de ganhar mais uma comissão no fim do mês.", s: 33 },
-        { t: "É alguém com um problema. Talvez eu consiga ajudar, talvez não.", s: 66 },
-        { t: "É uma pessoa que Deus colocou na minha frente. Meu papel é servir, não empurrar venda.", s: 100 } ] },
-    { dim: "Entender o cliente", q: "Antes de oferecer seu produto, quanto tempo você gasta pra entender o que o cliente realmente precisa?",
+        { t: "“Mais um para bater a meta.”", s: 0 },
+        { t: "“Mais uma comissão no fim do mês.”", s: 33 },
+        { t: "“Alguém com um problema que talvez eu consiga resolver.”", s: 66 },
+        { t: "“Uma pessoa que Deus colocou no meu caminho para eu servir.”", s: 100 } ],
+      verse: "Porque o Filho do homem também não veio para ser servido, mas para servir e dar a sua vida em resgate por muitos.", ref: "Marcos 10.45",
+      lesson: "O jeito como você enxerga o cliente define o jeito como você vende. Quem vê pessoas, e não números, conversa de outra forma." },
+    { dim: "Escuta e diagnóstico", cap: 5, chap: "Capítulo 5 · O processo completo da venda",
+      q: "Antes de apresentar seu produto, quanto tempo você dedica a entender o que o cliente realmente precisa?",
       options: [
-        { t: "Nenhum. Já começo apresentando o produto direto.", s: 0 },
-        { t: "Faço 2 ou 3 perguntas rápidas e já parto pra proposta.", s: 33 },
-        { t: "Escuto com atenção, mas às vezes acelero a conversa pra fechar logo.", s: 66 },
-        { t: "Escuto de verdade. E se meu produto não for pra ele, tenho coragem de dizer isso.", s: 100 } ] },
-    { dim: "Negociação", q: "O cliente pede um desconto bem grande. Você até tem espaço pra dar, mas o preço já era justo. O que faz?",
+        { t: "Nenhum. Já começo apresentando.", s: 0 },
+        { t: "Faço duas ou três perguntas rápidas.", s: 33 },
+        { t: "Escuto, mas às vezes acelero para fechar logo.", s: 66 },
+        { t: "Escuto com calma e, se o produto não servir, digo isso a ele.", s: 100 } ],
+      verse: "Todo o homem seja pronto para ouvir, tardio para falar, tardio para se irar.", ref: "Tiago 1.19",
+      lesson: "O diagnóstico é a etapa mais importante da venda e a mais pulada. O livro ensina a perguntar sobre situação, problema, implicação e necessidade antes de propor." },
+    { dim: "Negociação", cap: 5, chap: "Capítulo 5 · O processo completo da venda",
+      q: "O cliente pede um desconto grande. Seu preço já é justo. O que você faz?",
       options: [
-        { t: "Dou tudo que ele pede. Melhor vender pouco do que não vender.", s: 0 },
-        { t: "Cedo boa parte pra não perder a venda.", s: 33 },
-        { t: "Negocio no meio do caminho, mas fico incomodado com o resultado.", s: 66 },
-        { t: "Defendo meu preço com clareza. Se ele não aceitar, tudo bem — sei dizer não.", s: 100 } ] },
-    { dim: "Depois da venda", q: "A venda foi feita, a comissão caiu na conta. Como fica seu relacionamento com esse cliente daqui pra frente?",
+        { t: "Dou o desconto. Melhor vender barato do que não vender.", s: 0 },
+        { t: "Cedo boa parte para não perder a venda.", s: 33 },
+        { t: "Encontro um meio-termo, mesmo incomodado.", s: 66 },
+        { t: "Explico com clareza o valor do meu preço e aceito se ele não quiser.", s: 100 } ],
+      verse: "Os pensamentos do diligente tendem só à abundância, porém os de todo apressado, tão-somente à pobreza.", ref: "Provérbios 21.5",
+      lesson: "Negociar não é briga. O livro ensina a entrar na conversa sabendo seu preço mínimo, seu preço ideal e o que pode oferecer além do desconto." },
+    { dim: "Pós-venda", cap: 9, chap: "Capítulo 9 · Transformando clientes em relacionamentos",
+      q: "A venda foi feita e a comissão caiu na conta. E agora, como fica o cliente?",
       options: [
-        { t: "Só volto a falar com ele se der problema. Já parti pra próxima.", s: 0 },
-        { t: "Mando uma mensagem qualquer de vez em quando.", s: 33 },
-        { t: "Dou atenção nos primeiros dias e depois vou sumindo.", s: 66 },
-        { t: "Cuido dele de verdade. Sei que indicação e nova compra vêm naturalmente.", s: 100 } ] },
-    { dim: "Dinheiro", q: "Como você enxerga o dinheiro que entra do seu trabalho?",
+        { t: "Só volto a falar com ele se der problema.", s: 0 },
+        { t: "Mando uma mensagem de vez em quando.", s: 33 },
+        { t: "Dou atenção nos primeiros dias e depois some.", s: 66 },
+        { t: "Faço acompanhamento planejado, como em 7, 30 e 90 dias.", s: 100 } ],
+      verse: "Não atente cada um para o que é propriamente seu, mas cada qual também para o que é dos outros.", ref: "Filipenses 2.4",
+      lesson: "Para o vendedor cristão, o relacionamento começa no fechamento. Cuidado constante transforma clientes em relacionamentos e em indicações." },
+    { dim: "Dinheiro", cap: 7, chap: "Capítulo 7 · Dinheiro, lucro e prosperidade",
+      q: "Como você enxerga o dinheiro que ganha com o seu trabalho?",
       options: [
-        { t: "É meu. Eu trabalhei duro pra conquistar.", s: 0 },
-        { t: "É meu, mas sempre separo uma parte pra igreja.", s: 33 },
+        { t: "É meu. Eu trabalhei duro por ele.", s: 0 },
+        { t: "É meu, e separo uma parte para a igreja.", s: 33 },
         { t: "É meu, e uso com responsabilidade.", s: 66 },
-        { t: "É um recurso que Deus me confiou. Uso pra viver, ajudar minha família, investir e devolver.", s: 100 } ] },
-    { dim: "Liderança", q: "Sobre as pessoas que trabalham perto de você (colegas de equipe, parceiros, familiares que te ajudam):",
+        { t: "É um recurso que Deus me confiou para viver, cuidar da família, investir e devolver.", s: 100 } ],
+      verse: "Antes te lembrarás do Senhor teu Deus, que ele é o que te dá força para adquirires poder.", ref: "Deuteronômio 8.18",
+      lesson: "Lucro justo é responsabilidade cristã. O livro mostra como administrar o dinheiro como mordomo, e não como dono absoluto." },
+    { dim: "Liderança", cap: 6, chap: "Capítulo 6 · Liderança e influência",
+      q: "Sobre as pessoas que trabalham perto de você (equipe, parceiros, família):",
       options: [
-        { t: "Cada um por si. Bater meta é problema individual.", s: 0 },
-        { t: "Ajudo quando alguém me pede, mas não sinto que sou responsável por elas.", s: 33 },
-        { t: "Compartilho o que aprendo, mas não é uma coisa constante.", s: 66 },
-        { t: "Ajudar essas pessoas a crescerem é parte do meu chamado — não do meu tempo livre.", s: 100 } ] },
-    { dim: "Propósito", q: "No fim de um dia de trabalho, o que faz você sentir que foi um bom dia?",
+        { t: "Cada um por si. Meta é responsabilidade individual.", s: 0 },
+        { t: "Ajudo quando alguém pede.", s: 33 },
+        { t: "Compartilho o que aprendo, mas sem constância.", s: 66 },
+        { t: "Ajudar essas pessoas a crescer faz parte do meu chamado.", s: 100 } ],
+      verse: "Todo aquele que quiser entre vós fazer-se grande será o que vos sirva.", ref: "Mateus 20.26",
+      lesson: "Liderar é servir, formar e cuidar de pessoas. A cultura de uma equipe se molda pelo exemplo do líder, não pelos discursos." },
+    { dim: "Propósito", cap: 10, chap: "Capítulo 10 · Construindo um legado para o Reino de Deus",
+      q: "No fim do dia, o que faz você sentir que foi um bom dia de trabalho?",
       options: [
-        { t: "Quantas vendas eu fechei naquele dia.", s: 0 },
-        { t: "O quanto avancei na minha meta do mês.", s: 33 },
-        { t: "As vendas que fiz + as pessoas que ganhei junto.", s: 66 },
-        { t: "Se agi com honestidade, servi bem e fui fiel. O resultado vem depois, como consequência.", s: 100 } ] },
+        { t: "Quantas vendas eu fechei.", s: 0 },
+        { t: "Quanto avancei na meta do mês.", s: 33 },
+        { t: "As vendas e as pessoas que conquistei.", s: 66 },
+        { t: "Ter agido com honestidade, servido bem e sido fiel. O resultado vem como consequência.", s: 100 } ],
+      verse: "Porque onde estiver o vosso tesouro, aí estará também o vosso coração.", ref: "Mateus 6.21",
+      lesson: "O verdadeiro sucesso se mede em fidelidade, em pessoas servidas e em legado, e não só em números." },
   ];
 
   const ORDERS = [[1,3,0,2],[0,2,1,3],[3,0,2,1],[2,0,3,1],[0,3,1,2],[3,1,0,2],[1,0,2,3],[0,1,3,2],[3,2,1,0]];
@@ -2073,6 +2111,20 @@
       `;
       chart.appendChild(row);
     });
+
+    const weak = QUESTIONS.map((q, i) => ({ q, score: scores[i].score })).filter(x => x.score < 66);
+    const strong = QUESTIONS.filter((q, i) => scores[i].score >= 66).map(q => q.dim.toLowerCase());
+    let html = '<h4>O que suas respostas mostram</h4>';
+    if (strong.length) html += `<p style="margin:0 0 12px">Você já tem uma base boa em: <b>${strong.join(', ')}</b>.</p>`;
+    if (weak.length) {
+      html += '<p style="margin:0 0 10px">Estas áreas pedem atenção, e o livro trata de cada uma delas:</p>';
+      weak.forEach(x => {
+        html += `<div class="qlearn"><div class="lk">${x.q.dim}</div><blockquote>“${x.q.verse}”<cite>${x.q.ref}</cite></blockquote><div>${x.q.lesson}</div></div>`;
+      });
+    } else {
+      html += '<p style="margin:0">Você já pratica os princípios do livro em todas as áreas. A leitura vai ajudar a aprofundar e a ensinar outras pessoas a vender do mesmo jeito.</p>';
+    }
+    $$('dg-recs').innerHTML = html;
 
     requestAnimationFrame(() => {
       chart.querySelectorAll('.cfill').forEach((el, i) => {
